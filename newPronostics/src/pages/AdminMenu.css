@@ -1,0 +1,21 @@
+.li-liste-droits {
+    display: flex;
+    align-items: center;
+}
+
+.consigne-menu-admin {
+    font-size: 20px;
+}
+
+.icon-menu-admin{
+    margin: 5px;
+}
+
+/* .toolbar-admin {
+    background-color: red;
+    color: #333;
+    font-size: 18px;
+} */
+
+
+

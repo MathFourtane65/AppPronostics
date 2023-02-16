@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
 });
 
 router.post('/', competitionController.createCompetition);
+router.delete('/:id', competitionController.deleteCompetition);
 
 module.exports = router;
 

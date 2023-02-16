@@ -23,6 +23,8 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import AdminMenu from './pages/AdminMenu';
+import Competitions from './pages/Competitions';
 
 setupIonicReact();
 
@@ -42,6 +44,13 @@ const App: React.FC = () => (
         <Route exact path="/">
           <Redirect to="/login" />
         </Route>
+        <Route exact path="/admin">
+          <AdminMenu />
+        </Route>
+        <Route exact path="/admin/competitions">
+          <Competitions />
+        </Route>
+
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

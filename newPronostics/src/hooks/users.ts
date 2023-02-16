@@ -22,7 +22,7 @@ const [users, setUsers] = useState<User[]>([]);
             data: user
         });
         const newUsers = [user, ...users];
-        alert("User created successfully");
+        //alert("User created successfully");
         setUsers(newUsers);
     };
 
@@ -41,4 +41,5 @@ export interface User {
     lastName?: string,
     password?: string,
     favoriteTeam?: string
+    role?: string
 }

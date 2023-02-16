@@ -1,10 +1,10 @@
-import { IonAlert, IonButton, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonAlert, IonButton, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import { personAdd } from 'ionicons/icons';
-import { IonImg } from '@ionic/react';
+import { IonImg, useIonPopover  } from '@ionic/react';
 import { useRef, useState } from 'react';
 import { User, useUsers } from '../hooks/users';
 import { Redirect, Route, useHistory } from 'react-router-dom';
+
 // import './Login.css';
 
 // async function registerUser(event:any) {
@@ -29,6 +29,18 @@ import { Redirect, Route, useHistory } from 'react-router-dom';
 //   }
 
 const Signup: React.FC = () => {
+    const [present] = useIonToast();
+
+    const presentToast = (position: 'top' | 'middle' | 'bottom') => {
+      present({
+        message: 'Compte crée avec succès !',
+        duration: 1500,
+        position: position
+      });
+    };
+ 
+
+
     const { users, getAllUsers, createOneUser } = useUsers();
     const history = useHistory();
 
@@ -56,7 +68,7 @@ const Signup: React.FC = () => {
         console.log(newUser);
         createOneUser(newUser);
         history.push('/login');
-        
+        presentToast('top');     
 
     }
     return (
