@@ -1,15 +1,31 @@
-import { IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonMenu, IonMenuButton, IonMenuToggle, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonMenu, IonMenuButton, IonMenuToggle, IonPage, IonRow, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import { personCircle, trophy, football, analytics, logOut } from 'ionicons/icons';
 import { Redirect, Route, useHistory } from 'react-router-dom';
 
 import './AdminMenu.css';
 
 const AdminMenu: React.FC = () => {
+    const [present] = useIonToast();
+
+    const presentToast = (position: 'top' | 'middle' | 'bottom', message: string) => {
+      present({
+        message: message,
+        duration: 1500,
+        position: position
+      });
+    };
+  
     const history = useHistory();
 
 
     function toCompetitions() {
         history.push('/admin/competitions');
+    }
+
+    function logout() {
+        localStorage.removeItem('user');
+        presentToast('top', "Déconnexion réussie !");
+        history.push('/login');
     }
 
     return (
@@ -56,8 +72,8 @@ const AdminMenu: React.FC = () => {
                         <IonTitle>Accueil ADMIN</IonTitle>
                         <IonIcon 
                             icon={logOut}
-                            style={{ fontSize: "30px", color: "#008C9E" }}
-                            onClick={() => console.log('CLICK LOGOUT')}
+                            style={{ fontSize: "40px", color: "#008C9E" }}
+                            onClick={() => logout()}
                         >
                         </IonIcon>
 </IonRow>

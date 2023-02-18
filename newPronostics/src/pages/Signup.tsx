@@ -49,21 +49,24 @@ const Signup: React.FC = () => {
     const inputLastName = useRef<HTMLIonInputElement>(null);
     const inputPassword = useRef<HTMLIonInputElement>(null);
     const inputFavoriteTeam = useRef<HTMLIonSelectElement>(null);
+    const inputRole = useRef<HTMLIonSelectElement>(null);
 
 
     function confirmCreateAccount() {
         const email = inputEmail.current?.value?.toString();
-        const firstName = inputFirstName.current?.value?.toString();;
-        const lastName = inputLastName.current?.value?.toString();;
-        const password = inputPassword.current?.value?.toString();;
-        const favoriteTeam = inputFavoriteTeam.current?.value?.toString();;
+        const firstName = inputFirstName.current?.value?.toString();
+        const lastName = inputLastName.current?.value?.toString();
+        const password = inputPassword.current?.value?.toString();
+        const favoriteTeam = inputFavoriteTeam.current?.value?.toString();
+        const role = inputRole.current?.value?.toString();
 
         const newUser : User = {
             email: email,
             firstName: firstName,
             lastName: lastName,
             password: password,
-            favoriteTeam: favoriteTeam
+            favoriteTeam: favoriteTeam, 
+            role: role
         };
         console.log(newUser);
         createOneUser(newUser);
@@ -151,6 +154,20 @@ const Signup: React.FC = () => {
                             </IonList>
                         </IonCol>
                     </IonRow>
+
+                    <IonRow>
+                        <IonCol>
+                            <IonList>
+                                <IonItem>
+                                    <IonSelect placeholder="Choisissez votre rôle" ref={inputRole}>
+                                        <IonSelectOption value="admin">Admin</IonSelectOption>
+                                        <IonSelectOption value="joueur">Joueur</IonSelectOption>
+                                    </IonSelect>
+                                </IonItem>
+                            </IonList>
+                        </IonCol>
+                    </IonRow>
+
 
 
                     <IonCol>

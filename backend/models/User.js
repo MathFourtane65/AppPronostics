@@ -20,6 +20,9 @@ const UserSchema = new mongoose.Schema({
     favoriteTeam: {
         type: String,
     },
+    role: {
+        type: String,
+    },
     numberPoints: {
         type: Number,
     }

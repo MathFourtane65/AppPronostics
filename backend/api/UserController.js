@@ -32,34 +32,46 @@ exports.registerUser = (req, res) => {
     });
 };
 
-exports.loginUser = (req, res) => {
-    if (!req.body.email || !req.body.password) {
-        return res.status(400).send({ 'msg': 'You need to send email and password' });
+exports.loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    const user  = await User.findOne({ email });
+    if (!user) {
+        return res.status(400).json({ 'msg': 'The user does not exist' });
     }
-
-    User.findOne({ email: req.body.email }, (err, user) => {
-        if (err) {
-            return res.status(400).send({ 'msg': err });
-        }
-
-        if (!user) {
-            return res.status(400).json({ 'msg': 'The user does not exist' });
-        }
-        else {
-            return res.status(200).json({
-                token: createToken(user),
-                user: user
-            });
-        }
-    });
-    //     user.comparePassword(req.body.password, (err, isMatch) => {
-    //         if (isMatch && !err) {
-    //             return res.status(200).json({
-    //                 token: createToken(user)
-    //             });
-    //         } else {
-    //             return res.status(400).json({ msg: "The email and password don't match." });
-    //         }
-    //     });
-    // });
+    if(user.password !== password) {
+        return res.status(400).json({ 'msg': 'The password is incorrect' });
+    }
+    return res.status(200).json({ user, });
 };
+
+// exports.loginUser = (req, res) => {
+//     if (!req.body.email || !req.body.password) {
+//         return res.status(400).send({ 'msg': 'You need to send email and password' });
+//     }
+
+//     User.findOne({ email: req.body.email }, (err, user) => {
+//         if (err) {
+//             return res.status(400).send({ 'msg': err });
+//         }
+
+//         if (!user) {
+//             return res.status(400).json({ 'msg': 'The user does not exist' });
+//         }
+//         else {
+//             return res.status(200).json({
+//                 token: createToken(user),
+//                 user: user
+//             });
+//         }
+//     });
+//     //     user.comparePassword(req.body.password, (err, isMatch) => {
+//     //         if (isMatch && !err) {
+//     //             return res.status(200).json({
+//     //                 token: createToken(user)
+//     //             });
+//     //         } else {
+//     //             return res.status(400).json({ msg: "The email and password don't match." });
+//     //         }
+//     //     });
+//     // });
+// };

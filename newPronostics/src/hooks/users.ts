@@ -27,6 +27,17 @@ const [users, setUsers] = useState<User[]>([]);
     };
 
     const loginUser = async (email?: string, password?: string) => {
+        let i : number = 0;
+        users.map((user) => {
+            if(user.email === email && user.password === password){
+                //localStorage.setItem("user", JSON.stringify(user));
+                //window.location.href = "/home";
+                i = 1;
+            } else {
+                i = 2;
+            }
+        });
+        return i;
         
     };
         
