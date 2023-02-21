@@ -23,22 +23,15 @@ const [competitions, setCompetitions] = useState<Competition[]>([]);
         setCompetitions(newCompetitions);
     };
 
-    const deleteOneCompetition = async (competition: Competition) => {
-        const response = await axios({
-            method: "delete",
-            url: "http://localhost:3000/api/competitions",
-            data: competition
-            });
-        const newCompetitions = [competition, ...competitions];
-        setCompetitions(newCompetitions);
-    };
+
      
 
-    return { competitions, getAllCompetitions, createOneCompetition, deleteOneCompetition };
+    return { competitions, getAllCompetitions, createOneCompetition };
 }
 
 
 export interface Competition {
+    _id?: any;
     name?: string,
     startDate?: string,
     endDate?: string,

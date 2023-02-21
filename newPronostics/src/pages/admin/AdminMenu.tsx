@@ -22,6 +22,10 @@ const AdminMenu: React.FC = () => {
         history.push('/admin/competitions');
     }
 
+    function toMatchs(){
+        history.push('/admin/matchs');
+    }
+
     function logout() {
         localStorage.removeItem('user');
         presentToast('top', "Déconnexion réussie !");
@@ -43,7 +47,7 @@ const AdminMenu: React.FC = () => {
                         </IonItem>
                     </IonMenuToggle>
                     <IonMenuToggle>
-                        <IonItem>
+                        <IonItem onClick={() => toMatchs()}>
                             <IonIcon icon={football} style={{ fontSize: "30px", color: "#008C9E" }} /> MATCHS
                         </IonItem>
                     </IonMenuToggle>
@@ -92,7 +96,7 @@ const AdminMenu: React.FC = () => {
                                 onClick={() => console.log('CLICK COMPETITIONS')}
                             />
                         </li>
-                        <li className='li-liste-droits'>Gestion des matchs
+                        <li className='li-liste-droits' onClick={() => toMatchs()}>Gestion des matchs
                             <IonIcon
                                 className='icon-menu-admin'
                                 style={{ fontSize: "30px", color: "#008C9E" }}

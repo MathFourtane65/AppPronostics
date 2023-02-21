@@ -1,0 +1,33 @@
+.title-menu-player{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #008C9E;
+}
+
+.title-menu-player h3 {
+    margin: 0;
+    padding: 0;
+    margin-right: 5px;
+    margin-left: 20px;
+    font-weight: bold;
+    font-style : italic;
+}
+
+.titre-page-compte {
+    text-align: center;
+
+}
+
+.consigne-page-joueur {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    color: #008C9E;
+    font-size: 20px;
+    padding: 5px;
+    border: solid 1px #008C9E;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}

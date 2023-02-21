@@ -11,11 +11,3 @@ exports.createCompetition = (req, res) => {
     });
 };
 
-exports.deleteCompetition = (req, res) => {
-    Competition.findByIdAndRemove(req.params.id, (err, competition) => {
-        if (err) {
-            return res.status(400).json({ 'msg': err });
-        }
-        return res.status(200).json(competition);
-    });
-}

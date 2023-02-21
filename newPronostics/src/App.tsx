@@ -19,13 +19,22 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-/* Theme variables */
+
 import './theme/variables.css';
+
+
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import AdminMenu from './pages/AdminMenu';
-import Competitions from './pages/Competitions';
-import PlayerMenu from './pages/PlayerMenu';
+
+//ADMIN
+import AdminMenu from './pages/admin/AdminMenu';
+import Competitions from './pages/admin/Competitions';
+import Matchs from './pages/admin/Matchs';
+
+//JOUEUR
+import PlayerAccount from './pages/player/PlayerAccount';
+import PlayerCompetitions from './pages/player/PlayerCompetitions';
+
 
 setupIonicReact();
 
@@ -36,23 +45,39 @@ const App: React.FC = () => (
         <Route exact path="/home">
           <Home />
         </Route>
+
         <Route exact path="/login">
           <Login />
         </Route>
+
         <Route exact path="/signup">
           <Signup />
         </Route>
+
         <Route exact path="/">
           <Redirect to="/login" />
         </Route>
-        <Route exact path="/player">
-          <PlayerMenu />
+
+        <Route exact path="/joueur">
+          <PlayerAccount />
         </Route>
+
         <Route exact path="/admin">
           <AdminMenu />
         </Route>
+
         <Route exact path="/admin/competitions">
           <Competitions />
+        </Route>
+
+        <Route exact path="/admin/matchs">
+          <Matchs />
+        </Route>
+
+
+
+        <Route exact path="/joueur/competitions">
+          <PlayerCompetitions />
         </Route>
 
       </IonRouterOutlet>

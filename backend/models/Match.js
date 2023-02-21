@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const MatchSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     nameTeamA: {
         type: String,
     },
@@ -11,20 +12,23 @@ const MatchSchema = new mongoose.Schema({
         type: String,
     },
     date: {
-        type: Date,
+        type: String,
     },
     halfTimeScore: {
-        type: [Number],
+        type: String,
     },
     endMatchScore: {
-        type: [Number],
+        type: String,
     },
     endPenaltiesScore: {
-        type: [Number],
+        type: String,
     },
     winnerTeam: {
         type: String,
-    }
+    },
+    status: {
+        type: String,
+    },
 })
 
 module.exports = mongoose.model('Match', MatchSchema);

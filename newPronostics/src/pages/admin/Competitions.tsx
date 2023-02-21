@@ -2,7 +2,7 @@ import { IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardS
 import { personCircle, trophy, football, analytics, home, add, trash } from 'ionicons/icons';
 import { useEffect, useRef, useState } from 'react';
 import { Redirect, Route, useHistory } from 'react-router-dom';
-import { useCompetitions, Competition } from '../hooks/competitions';
+import { useCompetitions, Competition } from '../../hooks/competitions';
 
 import './Competitions.css';
 
@@ -33,7 +33,7 @@ const Competitions: React.FC = () => {
   const inputNumberMatchesCompetition = useRef<HTMLIonInputElement>(null);
 
   const history = useHistory();
-  const { competitions, getAllCompetitions, createOneCompetition, deleteOneCompetition } = useCompetitions();
+  const { competitions, getAllCompetitions, createOneCompetition } = useCompetitions();
 
   function backToAdminMenu() {
     console.log('CLICK HOME');
@@ -50,7 +50,7 @@ const Competitions: React.FC = () => {
     }
     console.log(newCompetition);
     createOneCompetition(newCompetition).then(() => {
-      presentToast('middle', "Compétition créée avec succès !");
+      presentToast('top', "Compétition créée avec succès !");
       //getAllCompetitions();
     }).catch((err) => {
       console.log(err);
@@ -93,7 +93,7 @@ const Competitions: React.FC = () => {
             {comp.description}
             <p>Nombre de matchs : {comp.numberMatches}</p>
           </IonCardContent>
-          <div className='icon-delete'><IonIcon icon={trash} onClick={() => deleteOneCompetition(comp)}></IonIcon></div>
+          <div className='icon-delete'><IonIcon icon={trash} onClick={() => console.log("DELETE "+ comp._id)}></IonIcon></div>
         </IonCard>                 
         ))}
 

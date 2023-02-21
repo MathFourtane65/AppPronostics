@@ -46,10 +46,13 @@ const Login: React.FC = () => {
       localStorage.setItem('user', JSON.stringify(user));
       
       if (user.role == "admin") {
+        console.log("admin role");        
         history.push('/admin');
-        //console.log("admin");
-      } else {
-        history.push('/player');
+      }
+      if (user.role == "joueur") {
+        console.log("joueur role");
+        history.push('/joueur');  
+        window.location.reload(); //forçage reload page sinon url change dans barre d'adresse masi pas le contenu de la page
       }
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.msg) {
