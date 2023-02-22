@@ -7,10 +7,12 @@ import { User, useUsers } from '../hooks/users';
 import './Login.css';
 import axios from 'axios';
 import { IonToast } from '@ionic/react';
+import { createBrowserHistory } from 'history';
 
 const Login: React.FC = () => {
   const { users, getAllUsers, createOneUser, loginUser } = useUsers();
-  const history = useHistory();
+  //const history = useHistory();
+  const history = createBrowserHistory({ forceRefresh: true });
 
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState('');
@@ -50,6 +52,7 @@ const Login: React.FC = () => {
         //console.log("admin");
       } else {
         history.push('/player');
+        //window.location.reload(); //forçage reload page sinon url change dans barre d'adresse masi pas le contenu de la page
       }
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.msg) {

@@ -1,4 +1,5 @@
 import { IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonFab, IonFabButton, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenu, IonMenuButton, IonModal, IonPage, IonRow, IonTextarea, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
+import { createBrowserHistory } from 'history';
 import { personCircle, trophy, football, analytics, home, add, trash } from 'ionicons/icons';
 import { useEffect, useRef, useState } from 'react';
 import { Redirect, Route, useHistory } from 'react-router-dom';
@@ -32,8 +33,9 @@ const Competitions: React.FC = () => {
   const inputEndDateCompetition = useRef<HTMLIonInputElement>(null);
   const inputNumberMatchesCompetition = useRef<HTMLIonInputElement>(null);
 
-  const history = useHistory();
-  const { competitions, getAllCompetitions, createOneCompetition, deleteOneCompetition } = useCompetitions();
+  //const history = useHistory();
+  const history = createBrowserHistory({ forceRefresh: true });
+  const { competitions, getAllCompetitions, createOneCompetition } = useCompetitions();
 
   function backToAdminMenu() {
     console.log('CLICK HOME');
@@ -93,7 +95,7 @@ const Competitions: React.FC = () => {
             {comp.description}
             <p>Nombre de matchs : {comp.numberMatches}</p>
           </IonCardContent>
-          <div className='icon-delete'><IonIcon icon={trash} onClick={() => deleteOneCompetition(comp)}></IonIcon></div>
+          <div className='icon-delete'><IonIcon icon={trash} onClick={() => console.log(comp?._id)}></IonIcon></div>
         </IonCard>                 
         ))}
 

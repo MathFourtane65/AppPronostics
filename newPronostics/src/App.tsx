@@ -26,6 +26,7 @@ import Signup from './pages/Signup';
 import AdminMenu from './pages/AdminMenu';
 import Competitions from './pages/Competitions';
 import PlayerMenu from './pages/PlayerMenu';
+import Matchs from './pages/Matchs';
 
 setupIonicReact();
 
@@ -53,6 +54,10 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/admin/competitions">
           <Competitions />
+        </Route>
+
+        <Route exact path="/admin/matchs">
+          <Matchs />
         </Route>
 
       </IonRouterOutlet>

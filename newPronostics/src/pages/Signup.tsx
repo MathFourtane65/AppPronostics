@@ -4,6 +4,7 @@ import { IonImg, useIonPopover  } from '@ionic/react';
 import { useRef, useState } from 'react';
 import { User, useUsers } from '../hooks/users';
 import { Redirect, Route, useHistory } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 // import './Login.css';
 
@@ -42,7 +43,9 @@ const Signup: React.FC = () => {
 
 
     const { users, getAllUsers, createOneUser } = useUsers();
-    const history = useHistory();
+    //const history = useHistory();
+    const history = createBrowserHistory({ forceRefresh: true });
+
 
     const inputEmail = useRef<HTMLIonInputElement>(null);
     const inputFirstName = useRef<HTMLIonInputElement>(null);
@@ -146,9 +149,9 @@ const Signup: React.FC = () => {
                             <IonList>
                                 <IonItem>
                                     <IonSelect placeholder="Choisissez votre équipe favorite" ref={inputFavoriteTeam}>
-                                        <IonSelectOption value="ol">OL</IonSelectOption>
-                                        <IonSelectOption value="om">OM</IonSelectOption>
-                                        <IonSelectOption value="psg">PSG</IonSelectOption>
+                                        <IonSelectOption value="OL">OL</IonSelectOption>
+                                        <IonSelectOption value="OM">OM</IonSelectOption>
+                                        <IonSelectOption value="PSG">PSG</IonSelectOption>
                                     </IonSelect>
                                 </IonItem>
                             </IonList>

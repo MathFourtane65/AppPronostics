@@ -1,0 +1,35 @@
+
+.title-menu-player{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #201cd2;
+}
+
+.title-menu-player h3 {
+    margin: 0;
+    padding: 0;
+    margin-right: 5px;
+    margin-left: 20px;
+    font-weight: bold;
+    font-style : italic;
+}
+
+.titre-page-compte {
+    text-align: center;
+    color: #201cd2;
+    font-size: 30px;
+}
+
+
+.label-player-account {
+    font-size: 30px;
+    font-weight: bold;
+    color: #201cd2;
+}
+
+.ion-text-center{
+    color: #201cd2;
+    font-size: 20px;
+    text-decoration: underline;
+}
