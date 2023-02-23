@@ -47,6 +47,7 @@ const [users, setUsers] = useState<User[]>([]);
 
 
 export interface User {
+    _id?: any;
     email?: string,
     firstName?: string,
     lastName?: string,

@@ -10,6 +10,8 @@ const port = process.env.PORT || 3000;
 const userRoutes = require("./api/UserRoutes");
 const competitionRoutes = require("./api/CompetitionRoutes");
 const matchsRoutes = require("./api/MatchRoutes");
+const pronosticRoutes = require("./api/PronosticRoutes");
+
 
 const app = express();
 app.use(cors({credentials: true, origin: true}));
@@ -29,6 +31,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/competitions", competitionRoutes);
 app.use("/api/matchs", matchsRoutes);
+app.use("/api/pronostics", pronosticRoutes);
 
 mongoose
   .connect(process.env.MONGODB, { useUnifiedTopology: true })

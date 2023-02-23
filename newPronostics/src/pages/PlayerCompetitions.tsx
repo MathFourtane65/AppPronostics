@@ -5,8 +5,9 @@ import { personCircle, trophy, football, analytics, logOut, library, playCircle,
 import { Redirect, Route, useHistory } from 'react-router-dom';
 import { User } from '../hooks/users';
 import { Competition, useCompetitions } from '../hooks/competitions';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useMatchs, Match } from '../hooks/matchs';
+import { usePronostics, Pronostic } from '../hooks/pronostics';
 
 import './PlayerCompetitions.css';
 
@@ -14,6 +15,7 @@ const PlayerCompetitions: React.FC = () => {
     useEffect(() => {
         getAllCompetitions();
         getAllMatchs();
+        getAllPronostics();
     }, []);
 
     //var filteredMatchs : any[] = [];
@@ -23,8 +25,8 @@ const PlayerCompetitions: React.FC = () => {
     //console.log(user);
 
     const { competitions, getAllCompetitions, getOneCompetition } = useCompetitions();
-
     const { matchs, getAllMatchs } = useMatchs();
+    const { pronostics, getAllPronostics, createOnePronostic } = usePronostics();
 
 
     function getMatchsByCompetition(id: string) {
@@ -66,12 +68,33 @@ const PlayerCompetitions: React.FC = () => {
         history.push('/login');
     }
 
-    const [miTempsA, setMiTempsA] = useState(0);
-    const [miTempsB, setMiTempsB] = useState(0);
-    const [finMatchA, setFinMatchA] = useState(0);
-    const [finMatchB, setFinMatchB] = useState(0);
-    const [tirsAuButA, setTirsAuButA] = useState(0);
-    const [tirsAuButB, setTirsAuButB] = useState(0);
+    const halfTimeScoreTeamA = useRef<HTMLIonInputElement>(null);
+    const halfTimeScoreTeamB = useRef<HTMLIonInputElement>(null);
+    const newInputDateMatch = useRef<HTMLIonInputElement>(null);
+    const newInputPlaceMatch = useRef<HTMLIonInputElement>(null);
+    const newInputStatusMatch = useRef<HTMLIonSelectElement>(null);
+    const newInputCompetitionMatch = useRef<HTMLIonSelectElement>(null);
+
+
+    function confirmCreatePronostic(){
+        const newPronostic : Pronostic = {
+            id_user: user._id,
+            id_match: matchSelected._id,
+            halfTimeScoreTeamA: halfTimeScoreTeamA.current?.value as number,
+            halfTimeScoreTeamB: halfTimeScoreTeamB.current?.value as number,
+            endMatchScoreTeamA: 0,
+            endMatchScoreTeamB: 0,
+            endPenaltiesScoreTeamA: 0,
+            endPenaltiesScoreTeamB: 0,
+            points: 0,
+        }
+        createOnePronostic(newPronostic).then(() => {
+            presentToast('top', "Match crée avec succès !");
+        }).catch((err) => {
+            console.log(err);
+        });
+        setShowModal(false);
+    }
 
 
 
@@ -148,10 +171,10 @@ const PlayerCompetitions: React.FC = () => {
                                     <IonLabel>Mi-temps</IonLabel>
                                 </IonCol>
                                 <IonCol>
-                                    <IonInput type="number" value={miTempsA} />
+                                    <IonInput type="number"  />
                                 </IonCol>
                                 <IonCol>
-                                    <IonInput className='input-score' type="number" value={miTempsB} />
+                                    <IonInput className='input-score' type="number" />
                                 </IonCol>
                             </IonRow>
                             <IonItemDivider></IonItemDivider>
@@ -160,10 +183,10 @@ const PlayerCompetitions: React.FC = () => {
                                     <IonLabel>Fin du match</IonLabel>
                                 </IonCol>
                                 <IonCol>
-                                    <IonInput type="number" value={miTempsA} />
+                                    <IonInput type="number"  />
                                 </IonCol>
                                 <IonCol>
-                                    <IonInput className='input-score' type="number" value={miTempsB} />
+                                    <IonInput className='input-score' type="number"/>
                                 </IonCol>
                             </IonRow>
                             <IonItemDivider></IonItemDivider>
@@ -172,14 +195,14 @@ const PlayerCompetitions: React.FC = () => {
                                     <IonLabel>TAB</IonLabel>
                                 </IonCol>
                                 <IonCol>
-                                    <IonInput type="number" value={miTempsA} />
+                                    <IonInput type="number"/>
                                 </IonCol>
                                 <IonCol>
-                                    <IonInput className='input-score' type="number" value={miTempsB} />
+                                    <IonInput className='input-score' type="number"  />
                                 </IonCol>
                             </IonRow>
                         </IonGrid>
-                        <IonButton className='btn-pronostic' expand="block" onClick={() => setShowPronosticsModal(false)}>Enregistrer</IonButton>
+                        <IonButton className='btn-pronostic' expand="block" onClick={() => confirmCreatePronostic()}>Enregistrer</IonButton>
 
 
                     </IonContent>
