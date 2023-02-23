@@ -53,4 +53,5 @@ export interface User {
     password?: string,
     favoriteTeam?: string
     role?: string
+    numberPoints?: number
 }

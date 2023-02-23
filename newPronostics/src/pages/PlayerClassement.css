@@ -1,0 +1,11 @@
+.header-classement {
+    font-size: 25px;
+    font-weight: bold;
+    color: #201cd2 ;
+    font-style: italic;
+}
+
+.ligne-classement{
+    border-bottom: #201cd2 1px solid;
+    font-size: 20px;
+}

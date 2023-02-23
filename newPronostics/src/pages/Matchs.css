@@ -4,6 +4,13 @@
     color: black;
 }
 
+.icon-delete-match{
+    color: red;
+    font-size: 30px;
+    margin-left: auto;
+    display: block;
+}
+
 .date-card-match{
     font-size: 18px;
     display: flex;
@@ -17,7 +24,7 @@
 }
 
 .status-card-match{
-    font-size: 18px;
+    font-size: 25px;
     display: flex;
     color: red;
     font-weight: bold;
@@ -38,10 +45,11 @@
 }
 
 .scores-card-match{
-    font-size: 18px;
+    font-size: 20px;
     color: black;
     list-style: none;
     font-style: italic;
     font-weight: bold;
- 
+    padding: 0;
+    text-align: center;
 }

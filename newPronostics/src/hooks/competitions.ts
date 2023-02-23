@@ -13,6 +13,15 @@ export function useCompetitions() {
     setCompetitions(response.data);
   };
 
+  const getOneCompetition = async (competitionId: string) => {
+    const response = await axios({
+      method: "get",
+      url: `http://localhost:3000/api/competitions/${competitionId}`,
+      data: {},
+    });
+    return response.data;
+  };
+
   const createOneCompetition = async (competition: Competition) => {
     const response = await axios({
       method: "post",
@@ -22,6 +31,13 @@ export function useCompetitions() {
     const newCompetitions = [competition, ...competitions];
     setCompetitions(newCompetitions);
   };
+
+  const deleteOneCompetition = async (competitionId: string) => {
+    await axios.delete(`http://localhost:3000/api/competitions/${competitionId}`);
+    const updatedCompetitions = competitions.filter((competition) => competition._id !== competitionId);
+    setCompetitions(updatedCompetitions);
+  };
+
 
   // const deleteOneCompetition = async (competition: Competition) => {
   //     const response = await axios({
@@ -37,7 +53,8 @@ export function useCompetitions() {
     competitions,
     getAllCompetitions,
     createOneCompetition,
-    //deleteOneCompetition,
+    deleteOneCompetition,
+    getOneCompetition,
   };
 }
 

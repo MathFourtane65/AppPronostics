@@ -45,22 +45,22 @@ const AdminMenu: React.FC = () => {
                 <IonContent className="ion-padding">
                     <IonMenuToggle>
                         <IonItem onClick={() => toCompetitions()}>
-                            <IonIcon icon={trophy} style={{ fontSize: "30px", color: "#008C9E" }} /> COMPETITIONS
+                            <IonIcon icon={trophy} style={{ fontSize: "30px", color: "#201cd2" }} /> COMPETITIONS
                         </IonItem>
                     </IonMenuToggle>
                     <IonMenuToggle>
                         <IonItem onClick={() => toMatchs()}>
-                            <IonIcon icon={football} style={{ fontSize: "30px", color: "#008C9E" }} /> MATCHS
+                            <IonIcon icon={football} style={{ fontSize: "30px", color: "#201cd2" }} /> MATCHS
                         </IonItem>
                     </IonMenuToggle>
                     <IonMenuToggle>
                         <IonItem>
-                            <IonIcon icon={analytics} style={{ fontSize: "30px", color: "#008C9E" }} /> PRONOSTICS
+                            <IonIcon icon={analytics} style={{ fontSize: "30px", color: "#201cd2" }} /> PRONOSTICS
                         </IonItem>
                     </IonMenuToggle>
                     <IonMenuToggle>
                         <IonItem>
-                            <IonIcon icon={personCircle} style={{ fontSize: "30px", color: "#008C9E" }} /> UTILISATEURS
+                            <IonIcon icon={personCircle} style={{ fontSize: "30px", color: "#201cd2" }} /> UTILISATEURS
                         </IonItem>
                     </IonMenuToggle>
 
@@ -78,7 +78,7 @@ const AdminMenu: React.FC = () => {
                         <IonTitle>Accueil ADMIN</IonTitle>
                         <IonIcon 
                             icon={logOut}
-                            style={{ fontSize: "40px", color: "#008C9E" }}
+                            style={{ fontSize: "40px", color: "#201cd2" }}
                             onClick={() => logout()}
                         >
                         </IonIcon>
@@ -93,7 +93,7 @@ const AdminMenu: React.FC = () => {
                         <li className='li-liste-droits' onClick={() => toCompetitions()}>Gestion des compétitions
                             <IonIcon
                                 className='icon-menu-admin'
-                                style={{ fontSize: "30px", color: "#008C9E" }}
+                                style={{ fontSize: "30px", color: "#201cd2" }}
                                 icon={trophy}
                                 onClick={() => console.log('CLICK COMPETITIONS')}
                             />
@@ -101,7 +101,7 @@ const AdminMenu: React.FC = () => {
                         <li className='li-liste-droits' onClick={() => toMatchs()}>Gestion des matchs
                             <IonIcon
                                 className='icon-menu-admin'
-                                style={{ fontSize: "30px", color: "#008C9E" }}
+                                style={{ fontSize: "30px", color: "#201cd2" }}
                                 icon={football}
                                 onClick={() => console.log('CLICK MATCHS')}
                             />
@@ -109,7 +109,7 @@ const AdminMenu: React.FC = () => {
                         <li className='li-liste-droits'>Gestion des pronostics
                             <IonIcon
                                 className='icon-menu-admin'
-                                style={{ fontSize: "30px", color: "#008C9E" }}
+                                style={{ fontSize: "30px", color: "#201cd2" }}
                                 icon={analytics}
                                 onClick={() => console.log('CLICK PRONOSTICS')}
                             />
@@ -117,7 +117,7 @@ const AdminMenu: React.FC = () => {
                         <li className='li-liste-droits'>Gestion des utilisateurs
                             <IonIcon
                                 className='icon-menu-admin'
-                                style={{ fontSize: "30px", color: "#008C9E" }}
+                                style={{ fontSize: "30px", color: "#201cd2" }}
                                 icon={personCircle}
                                 onClick={() => console.log('CLICK UTILISATEURS')}
                             />

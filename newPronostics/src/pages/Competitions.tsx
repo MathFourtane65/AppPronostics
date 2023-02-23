@@ -35,7 +35,7 @@ const Competitions: React.FC = () => {
 
   //const history = useHistory();
   const history = createBrowserHistory({ forceRefresh: true });
-  const { competitions, getAllCompetitions, createOneCompetition } = useCompetitions();
+  const { competitions, getAllCompetitions, createOneCompetition, deleteOneCompetition } = useCompetitions();
 
   function backToAdminMenu() {
     console.log('CLICK HOME');
@@ -60,6 +60,15 @@ const Competitions: React.FC = () => {
 
     modal.current?.dismiss();    
   }
+
+  function confirmDeleteCompetition(id: string) {
+    deleteOneCompetition(id).then(() => {
+        presentToast('top', "Compétition supprimée avec succès !");
+    }).catch((err) => {
+        console.log(err);
+    });
+}
+
 
 
   return (
@@ -95,7 +104,7 @@ const Competitions: React.FC = () => {
             {comp.description}
             <p>Nombre de matchs : {comp.numberMatches}</p>
           </IonCardContent>
-          <div className='icon-delete'><IonIcon icon={trash} onClick={() => console.log(comp?._id)}></IonIcon></div>
+          <div className='icon-delete'><IonIcon icon={trash} onClick={() => confirmDeleteCompetition(comp?._id)}></IonIcon></div>
         </IonCard>                 
         ))}
 

@@ -167,7 +167,7 @@ const Matchs: React.FC = () => {
                     {matchs.map((match, index) => (
                         <IonCard key={index} className='card-content'>
                             <IonCardHeader>
-                                <IonCardTitle className='title-card-match'><IonIcon icon={ellipse} style={{ color: match.colorTeamA }}></IonIcon>{match.nameTeamA} VS {match.nameTeamB}<IonIcon icon={ellipse} style={{ color: match.colorTeamB }}></IonIcon></IonCardTitle>
+                                <IonCardTitle className='title-card-match'><IonIcon icon={ellipse} style={{ color: match.colorTeamA }}></IonIcon>{match.nameTeamA} VS {match.nameTeamB}<IonIcon icon={ellipse} style={{ color: match.colorTeamB }}></IonIcon><IonIcon className='icon-delete-match' icon={trash} onClick={() => confirmDeleteMatch(match._id)}></IonIcon></IonCardTitle>
                                 <IonCardSubtitle className='date-card-match'><IonIcon icon={calendarOutline}></IonIcon>{match.date}</IonCardSubtitle>
                                 <IonCardSubtitle className='place-card-match' ><IonIcon onClick={() => {
                                     const url = `https://www.google.com/maps/search/?api=1&query=${match.place}`;
@@ -191,8 +191,8 @@ const Matchs: React.FC = () => {
                                     </li>
                                 </ul>
                             </IonCardContent>
-                            <div className='icon-delete'><IonIcon icon={trash} onClick={() => confirmDeleteMatch(match._id)}></IonIcon></div>
-                            <div className='icon-delete'><IonIcon icon={pencil} id="modal-update-match" onClick={() => confirmUpdateMatch(match._id)}></IonIcon></div>
+                            {/* <div className='icon-delete'><IonIcon icon={trash} onClick={() => confirmDeleteMatch(match._id)}></IonIcon></div> */}
+                            {/* <div className='icon-delete'><IonIcon icon={pencil} id="modal-update-match" onClick={() => confirmUpdateMatch(match._id)}></IonIcon></div> */}
                         </IonCard>
                     ))}
 

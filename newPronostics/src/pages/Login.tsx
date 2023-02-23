@@ -1,4 +1,4 @@
-import { IonAlert, IonButton, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import { personCircle } from 'ionicons/icons';
 import { IonImg } from '@ionic/react';
 import React, { useRef, useState } from 'react';
@@ -11,29 +11,13 @@ import { createBrowserHistory } from 'history';
 
 const Login: React.FC = () => {
   const { users, getAllUsers, createOneUser, loginUser } = useUsers();
-  //const history = useHistory();
   const history = createBrowserHistory({ forceRefresh: true });
-
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState('');
 
   const inputEmail = useRef<HTMLIonInputElement>(null);
   const inputPassword = useRef<HTMLIonInputElement>(null);
 
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
-
-
-
-  // function login() {
-  //   const email = inputEmail.current?.value?.toString();
-  //   const password = inputPassword.current?.value?.toString();
-  //   console.log("email: " + email);
-  //   console.log("password: " + password);
-  //   let log : any = loginUser(email, password);
-  //   console.log(log);
-  // };
-
 
   async function login(event: any) {
     const email = inputEmail.current?.value?.toString();
@@ -49,10 +33,8 @@ const Login: React.FC = () => {
       
       if (user.role == "admin") {
         history.push('/admin');
-        //console.log("admin");
       } else {
         history.push('/player');
-        //window.location.reload(); //forçage reload page sinon url change dans barre d'adresse masi pas le contenu de la page
       }
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.msg) {
@@ -64,7 +46,6 @@ const Login: React.FC = () => {
     }
 
   }
-
 
   return (
     <IonPage>
@@ -118,12 +99,10 @@ const Login: React.FC = () => {
             </IonRow>
           </form>
         </IonGrid>
-
+        
         <IonToast position='top' cssClass='toast' isOpen={showToast} onDidDismiss={() => setShowToast(false)} message={toastMessage} duration={2500} />
 
         <IonImg src="../public/assets/images/logoMyPronos.png" alt="LOGO APP"></IonImg>
-
-
 
       </IonContent>
     </IonPage>

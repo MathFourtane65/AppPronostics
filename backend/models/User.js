@@ -25,6 +25,7 @@ const UserSchema = new mongoose.Schema({
     },
     numberPoints: {
         type: Number,
+        default: 0,
     }
 })
 

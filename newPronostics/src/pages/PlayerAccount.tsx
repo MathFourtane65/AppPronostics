@@ -26,9 +26,6 @@ const PlayerAccount: React.FC = () => {
     const history = createBrowserHistory({ forceRefresh: true });
 
 
-    function toCompetitions() {
-        history.push('/joueur/competitions');
-    }
 
 
     function logout() {

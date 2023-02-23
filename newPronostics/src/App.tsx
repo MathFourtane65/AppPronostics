@@ -28,6 +28,9 @@ import Competitions from './pages/Competitions';
 import PlayerMenu from './pages/PlayerMenu';
 import Matchs from './pages/Matchs';
 
+import PlayerCompetitions from './pages/PlayerCompetitions';
+import CompetitionDetails from './pages/CompetitionDetail';
+
 setupIonicReact();
 
 const App: React.FC = () => (
@@ -49,12 +52,21 @@ const App: React.FC = () => (
         <Route exact path="/player">
           <PlayerMenu />
         </Route>
+        {/* <Route exact path="/player/competitions">
+          <PlayerCompetitions />
+        </Route> */}
         <Route exact path="/admin">
           <AdminMenu />
         </Route>
         <Route exact path="/admin/competitions">
           <Competitions />
         </Route>
+        {/* <Route exact path="/competitions/:competitionId">
+          <CompetitionDetails />
+        </Route> */}
+        {/* <Route path = "/player/competitions">
+          <PlayerMenu />
+        </Route> */}
 
         <Route exact path="/admin/matchs">
           <Matchs />

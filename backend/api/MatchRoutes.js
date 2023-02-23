@@ -12,17 +12,6 @@ router.get("/", (req, res) => {
     });
 });
 
-// router.delete('/:id', (req, res) => {
-//   const matchId = req.params.id;
-//   Match.findByIdAndDelete(matchId)
-//     .then(() => {
-//       res.status(204).json({ message: 'Le match a été supprimé avec succès' });
-//     })
-//     .catch((err) => {
-//       res.status(500).json({ error: err.message });
-//     });
-// });
-
 router.delete('/:id', matchController.deleteMatch);
 router.post('/', matchController.createMatch);
 router.put('/:id', matchController.updateMatch);
